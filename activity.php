@@ -151,6 +151,6 @@
         echo "Date of Birth: " . $student1->dateOfBirth . "<br>";
         echo "Email: " . $student1->email . "<br>";
         echo "Phone: " . $student1->phone . "<br>";
-?>
+    ?>
 </body>
 </html>
