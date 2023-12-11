@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "Chavez"; 
+$dbname = "Chavez";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -27,6 +27,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             echo "Error adding user: " . $conn->error;
         }
+
+        // Redirect to avoid form resubmission
+        header("Location: {$_SERVER['PHP_SELF']}?tab=$currentTab");
+        exit();
     } elseif ($currentTab === 'students' && isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['dob']) && isset($_POST['address']) && isset($_POST['email'])) {
         // Process the form data for the Students table
         $firstname = $_POST['firstname'];
@@ -42,6 +46,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             echo "Error adding student: " . $conn->error;
         }
+
+        // Redirect to avoid form resubmission
+        header("Location: {$_SERVER['PHP_SELF']}?tab=$currentTab");
+        exit();
     } elseif ($currentTab === 'courses' && isset($_POST['courseName']) && isset($_POST['courseDescription'])) {
         // Process the form data for the Courses table
         $courseName = $_POST['courseName'];
@@ -54,6 +62,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             echo "Error adding course: " . $conn->error;
         }
+
+        // Redirect to avoid form resubmission
+        header("Location: {$_SERVER['PHP_SELF']}?tab=$currentTab");
+        exit();
     } elseif ($currentTab === 'instructors' && isset($_POST['instructorFirstName']) && isset($_POST['instructorLastName']) && isset($_POST['instructorEmail'])) {
         // Process the form data for the Instructors table
         $instructorFirstName = $_POST['instructorFirstName'];
@@ -67,6 +79,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             echo "Error adding instructor: " . $conn->error;
         }
+
+        // Redirect to avoid form resubmission
+        header("Location: {$_SERVER['PHP_SELF']}?tab=$currentTab");
+        exit();
     }
 }
 
@@ -142,4 +158,3 @@ $conn->close();
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
-
